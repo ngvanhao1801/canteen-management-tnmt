@@ -13,15 +13,16 @@ import org.springframework.web.context.request.WebRequest;
 @AllArgsConstructor
 @SessionAttributes("userdto")
 public class LogoutController {
-    @ModelAttribute("userdto")
-    public UserDto userDto(){
-        return new UserDto();
-    }
-    @GetMapping("/logout")
-    public String Logout(@ModelAttribute("userdto") UserDto userDto, WebRequest request, SessionStatus status){
+  @ModelAttribute("userdto")
+  public UserDto userDto() {
+    return new UserDto();
+  }
+
+  @GetMapping("/logout")
+  public String Logout(@ModelAttribute("userdto") UserDto userDto, WebRequest request, SessionStatus status) {
 //        Xóa session user ra khỏi vị trí
-        status.setComplete();// đã hoàn thành
-        request.removeAttribute("userdto",WebRequest.SCOPE_SESSION);//thực hiện xóa userdto ra khỏi tầm của session
-        return "redirect:/login";
-    }
+    status.setComplete();// đã hoàn thành
+    request.removeAttribute("userdto", WebRequest.SCOPE_SESSION);//thực hiện xóa userdto ra khỏi tầm của session
+    return "redirect:/login";
+  }
 }

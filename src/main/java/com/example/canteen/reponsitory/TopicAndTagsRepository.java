@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface TopicAndTagsRepository extends JpaRepository<TopicAndTags,Integer> {
+public interface TopicAndTagsRepository extends JpaRepository<TopicAndTags, Integer> {
 }

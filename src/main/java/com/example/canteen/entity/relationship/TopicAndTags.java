@@ -14,15 +14,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Table(name = "topic_and_tags")
 public class TopicAndTags implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
+  @ManyToOne
+  @JoinColumn(name = "topic_id")
+  private Topic topic;
 
-    @ManyToOne
-    @JoinColumn(name = "tag_id")
-    private Tags tags;
+  @ManyToOne
+  @JoinColumn(name = "tag_id")
+  private Tags tags;
 }

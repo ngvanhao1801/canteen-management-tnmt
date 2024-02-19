@@ -16,35 +16,35 @@ import java.time.format.DateTimeFormatter;
 @Service
 @Transactional//thêm cái này để tránh lỗi
 public class CommentServiceImpl implements CommentService {
-    @Autowired
-    private CommentReponsitory commentReponsitory;
+  @Autowired
+  private CommentReponsitory commentReponsitory;
 
-    @Override
-    public void save(CommentDto commentDto, User user, Topic topic) {
-        LocalDateTime Date = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd.MM.yyyy");
-        String creationDate = Date.format(formatter);
-        Comment comment=new Comment(
-                commentDto.getBody(),
-                creationDate,
-                user,
-                topic
-        );
-        commentReponsitory.save(comment);
-    }
+  @Override
+  public void save(CommentDto commentDto, User user, Topic topic) {
+    LocalDateTime Date = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd.MM.yyyy");
+    String creationDate = Date.format(formatter);
+    Comment comment = new Comment(
+        commentDto.getBody(),
+        creationDate,
+        user,
+        topic
+    );
+    commentReponsitory.save(comment);
+  }
 
-    @Override
-    public int countComment(Topic topic) {
-        return commentReponsitory.countCommentByTopic_Id(topic.getId());
-    }
+  @Override
+  public int countComment(Topic topic) {
+    return commentReponsitory.countCommentByTopic_Id(topic.getId());
+  }
 
-    @Override
-    public void delete(Integer topicId) {
-        commentReponsitory.removeAllByTopic_Id(topicId);
-    }
+  @Override
+  public void delete(Integer topicId) {
+    commentReponsitory.removeAllByTopic_Id(topicId);
+  }
 
-    @Override
-    public Comment findCommentbyId(Integer id) {
-        return commentReponsitory.getCommentById(id);
-    }
+  @Override
+  public Comment findCommentbyId(Integer id) {
+    return commentReponsitory.getCommentById(id);
+  }
 }

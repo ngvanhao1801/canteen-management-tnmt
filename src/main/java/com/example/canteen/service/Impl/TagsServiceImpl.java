@@ -10,10 +10,11 @@ import java.util.List;
 
 @Service
 public class TagsServiceImpl implements TagsService {
-    @Autowired
-    private TagsReponsitory tagsReponsitory;
-    @Override
-    public List<Tags> getListTag() {
-        return tagsReponsitory.findAll();
-    }
+  @Autowired
+  private TagsReponsitory tagsReponsitory;
+
+  @Override
+  public List<Tags> getListTag() {
+    return tagsReponsitory.findAll();
+  }
 }

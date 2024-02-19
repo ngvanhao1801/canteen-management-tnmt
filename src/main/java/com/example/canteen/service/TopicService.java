@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface TopicService {
-    void save(TopicDto topicDto, User user);
-    Topic findTopicById(Integer id);
-    void delete(Integer id);
-    void update(Topic topic);
+  void save(TopicDto topicDto, User user);
+
+  Topic findTopicById(Integer id);
+
+  void delete(Integer id);
+
+  void update(Topic topic);
 }

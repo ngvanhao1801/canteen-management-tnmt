@@ -9,10 +9,14 @@ import java.util.List;
 
 @Repository
 @EnableJpaRepositories
-public interface CommentReponsitory  extends JpaRepository<Comment,Integer> {
-    List<Comment> getAllByTopic_Id(Integer topicId);
-    Integer countCommentByTopic_Id(Integer topicId);
-    Integer countCommentByUser_ID(Integer userid);
-    void removeAllByTopic_Id(Integer topicId);
-    Comment getCommentById(Integer id);
+public interface CommentReponsitory extends JpaRepository<Comment, Integer> {
+  List<Comment> getAllByTopic_Id(Integer topicId);
+
+  Integer countCommentByTopic_Id(Integer topicId);
+
+  Integer countCommentByUser_ID(Integer userid);
+
+  void removeAllByTopic_Id(Integer topicId);
+
+  Comment getCommentById(Integer id);
 }

@@ -10,30 +10,30 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="topic")
+@Table(name = "topic")
 public class Topic implements Serializable {
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
 
-    @Column(name="title",nullable = false)
-    private String title;
+  @Column(name = "title", nullable = false)
+  private String title;
 
-    @Column(name = "creation_date",nullable = false)
-    private String CreationDate;
+  @Column(name = "creation_date", nullable = false)
+  private String CreationDate;
 
-    @Column(name ="body",nullable = false, length = 1024)
-    private String body;
+  @Column(name = "body", nullable = false, length = 1024)
+  private String body;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
 
-    public Topic(String title, String creationDate, String body,User user) {
-        this.title = title;
-        CreationDate = creationDate;
-        this.body = body;
-        this.user=user;
-    }
+  public Topic(String title, String creationDate, String body, User user) {
+    this.title = title;
+    CreationDate = creationDate;
+    this.body = body;
+    this.user = user;
+  }
 }

@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface ProfileReponsitory extends JpaRepository<Profile,Integer> {
-    Profile findProfileByUser(User user);
-    Profile findProfileById(int id);
+public interface ProfileReponsitory extends JpaRepository<Profile, Integer> {
+  Profile findProfileByUser(User user);
+
+  Profile findProfileById(int id);
 }

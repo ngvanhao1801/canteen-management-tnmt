@@ -11,9 +11,12 @@ import java.util.List;
 
 @Repository
 @EnableJpaRepositories
-public interface ReactReponsitory extends JpaRepository<Reacts,Integer> {
-    List<Reacts> findReactsByTopic(Topic topic);
-    List<Reacts> findReactsByComment(Comment comment);
-    void removeAllByTopic_Id(Integer topicId);
-    void removeAllByComment_Id(Integer commentId);
+public interface ReactReponsitory extends JpaRepository<Reacts, Integer> {
+  List<Reacts> findReactsByTopic(Topic topic);
+
+  List<Reacts> findReactsByComment(Comment comment);
+
+  void removeAllByTopic_Id(Integer topicId);
+
+  void removeAllByComment_Id(Integer commentId);
 }

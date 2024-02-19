@@ -10,6 +10,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TopicDto implements Serializable {
-    private String title;
-    private String Body;
+  private String title;
+  private String Body;
 }

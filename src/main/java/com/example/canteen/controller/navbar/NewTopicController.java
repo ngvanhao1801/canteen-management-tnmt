@@ -20,40 +20,42 @@ import java.util.List;
 @AllArgsConstructor
 @SessionAttributes("userdto")
 public class NewTopicController {
-    @Autowired
-    private TopicService topicService;
+  @Autowired
+  private TopicService topicService;
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    @Autowired
-    private UserReponsitory userReponsitory;
+  @Autowired
+  private UserReponsitory userReponsitory;
 
-    @Autowired
-    private TagsService tagsService;
-    @ModelAttribute("topic")
-    public TopicDto topicDto(){
-        return new TopicDto();
+  @Autowired
+  private TagsService tagsService;
+
+  @ModelAttribute("topic")
+  public TopicDto topicDto() {
+    return new TopicDto();
+  }
+
+  @ModelAttribute("userdto")
+  public UserDto userDto() {
+    return new UserDto();
+  }
+
+  @GetMapping("/newtopic")
+  public String showNewTopic(Model model) {
+    List<Tags> tags = tagsService.getListTag();
+    model.addAttribute("tags", tags);
+    return "/newtopic";
+  }
+
+  @PostMapping("/newtopic")
+  public String newTopic(@ModelAttribute("userdto") UserDto userDto, @ModelAttribute("topic") TopicDto topicDto, Model model) {
+    User user = userReponsitory.getUserByEmail(userDto.getEmail());
+    if (user == null) {
+      return "redirect:/login";
     }
-
-    @ModelAttribute("userdto")
-    public UserDto userDto(){
-        return new UserDto();
-    }
-
-    @GetMapping("/newtopic")
-    public String showNewTopic(Model model){
-        List<Tags> tags = tagsService.getListTag();
-        model.addAttribute("tags",tags);
-        return "/newtopic";
-    }
-    @PostMapping("/newtopic")
-    public String newTopic(@ModelAttribute("userdto") UserDto userDto,@ModelAttribute("topic") TopicDto topicDto,Model model){
-        User user = userReponsitory.getUserByEmail(userDto.getEmail());
-        if(user== null){
-            return "redirect:/login";
-        }
-        topicService.save(topicDto,user);
-        return "redirect:/home";
-    }
+    topicService.save(topicDto, user);
+    return "redirect:/home";
+  }
 }

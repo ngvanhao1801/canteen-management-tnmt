@@ -11,9 +11,12 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public interface CommentService {
-    void save(CommentDto commentDto, User user, Topic topic);
-    int countComment(Topic topic);
-    Comment findCommentbyId(Integer id);
-    void delete(Integer topicId);
+  void save(CommentDto commentDto, User user, Topic topic);
+
+  int countComment(Topic topic);
+
+  Comment findCommentbyId(Integer id);
+
+  void delete(Integer topicId);
 
 }

@@ -18,19 +18,21 @@ import java.util.List;
 @AllArgsConstructor
 @SessionAttributes("userdto")
 public class HomeController {
-    private CommentService commentService;
-    @Autowired
-    private TopicReponsitory topicReponsitory;
-    @ModelAttribute("userdto")
-    public UserDto userDto(){
-        return new UserDto();
-    }
-    @GetMapping("/home")
-    public String showHomeForm(@ModelAttribute("userdto") UserDto userDto,Model model){
-        List<Topic> topics = topicReponsitory.findAll();
-        model.addAttribute("topics",topics);
-        model.addAttribute("commentcount",commentService);
+  private CommentService commentService;
+  @Autowired
+  private TopicReponsitory topicReponsitory;
 
-        return "/home";
-    }
+  @ModelAttribute("userdto")
+  public UserDto userDto() {
+    return new UserDto();
+  }
+
+  @GetMapping("/home")
+  public String showHomeForm(@ModelAttribute("userdto") UserDto userDto, Model model) {
+    List<Topic> topics = topicReponsitory.findAll();
+    model.addAttribute("topics", topics);
+    model.addAttribute("commentcount", commentService);
+
+    return "/home";
+  }
 }

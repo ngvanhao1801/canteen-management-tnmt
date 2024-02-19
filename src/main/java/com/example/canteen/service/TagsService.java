@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface TagsService {
-    List<Tags> getListTag();
+  List<Tags> getListTag();
 }

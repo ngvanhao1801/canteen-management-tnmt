@@ -16,21 +16,23 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @AllArgsConstructor
 @SessionAttributes("userdto")
 public class AdminDeleteTopicController {
-    @Autowired
-    private TopicService topicService;
-    @Autowired
-    private CommentService commentService;
-    @Autowired
-    private ReactService reactService;
-    @ModelAttribute("userdto")
-    public UserDto userDto(){
-        return new UserDto();
-    }
-    @GetMapping("admin_home/deletetopic/{id}")
-    public String deleteTopic(@PathVariable String id){
-        reactService.delete(Integer.parseInt(id));
-        commentService.delete(Integer.parseInt(id));
-        topicService.delete(Integer.parseInt(id));
-        return "redirect:/admin_home";
-    }
+  @Autowired
+  private TopicService topicService;
+  @Autowired
+  private CommentService commentService;
+  @Autowired
+  private ReactService reactService;
+
+  @ModelAttribute("userdto")
+  public UserDto userDto() {
+    return new UserDto();
+  }
+
+  @GetMapping("admin_home/deletetopic/{id}")
+  public String deleteTopic(@PathVariable String id) {
+    reactService.delete(Integer.parseInt(id));
+    commentService.delete(Integer.parseInt(id));
+    topicService.delete(Integer.parseInt(id));
+    return "redirect:/admin_home";
+  }
 }

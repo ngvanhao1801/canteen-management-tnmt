@@ -11,25 +11,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @AllArgsConstructor
 public class UserRegistrationController {
-    private UserService userService;
-    @ModelAttribute("userdto")
-    public UserDto userResgistrationDto(){
-        return new UserDto();
-    }
-    @GetMapping("/registration")
-    public String showRegistrationForm(){
-        return "/registration";
-    }
+  private UserService userService;
 
-    @PostMapping("/registration")
-    public String registerUserAccount(@ModelAttribute("userdto") UserDto userDto){
-        if(userService.checkUserbyEmail(userDto.getEmail())){
-            return "redirect:/registration?emailexist";
-        }
-        if(userDto.getPassword().equals(userDto.getCheckPass())==false){
-            return "redirect:/registration?checkpass";
-        }
-        userService.save(userDto);
-        return "redirect:/registration?success";
+  @ModelAttribute("userdto")
+  public UserDto userResgistrationDto() {
+    return new UserDto();
+  }
+
+  @GetMapping("/registration")
+  public String showRegistrationForm() {
+    return "/registration";
+  }
+
+  @PostMapping("/registration")
+  public String registerUserAccount(@ModelAttribute("userdto") UserDto userDto) {
+    if (userService.checkUserbyEmail(userDto.getEmail())) {
+      return "redirect:/registration?emailexist";
     }
+    if (userDto.getPassword().equals(userDto.getCheckPass()) == false) {
+      return "redirect:/registration?checkpass";
+    }
+    userService.save(userDto);
+    return "redirect:/registration?success";
+  }
 }
